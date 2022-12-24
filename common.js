@@ -1,4 +1,5 @@
 const moment = require('moment');
+const ProgressBar = require('progress');
 
 /** 同步运行一个 Promise
  * @param {Promise} promise 要同步运行的 Promise
