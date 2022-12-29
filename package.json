@@ -1,7 +1,6 @@
 {
   "name": "jx3box-build-common",
   "version": "0.0.19",
-  "private": true,
   "description": "Utility library for JX3BOX build scripts",
   "main": "index.js",
   "scripts": {
@@ -10,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JX3BOX/jx3box-build-common.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@jx3box"
   },
   "author": "",
   "bugs": {
