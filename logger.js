@@ -20,9 +20,14 @@ const initLogger = (appName, config) => {
         sessionID: uuid(),
         console: {
             format: winston.format.combine(
-                winston.format.printf(info => 
-                    `[${info.timestamp}] [${info.labels.app}:${config.sessionID.slice(-4)}] [${info.labels.job ?? 'Main'}] [${info.level.toUpperCase().padEnd(5, ' ')}] ${info.message}`),
+                // 着色前等级转大写
+                winston.format((obj) => {
+                    obj.level = obj.level.toUpperCase();
+                    return obj;
+                })(),
                 winston.format.colorize(),
+                winston.format.printf(i => 
+                    `[${i.timestamp}] [${i.labels.app}:${config.sessionID.slice(-4)}] [${i.level}] ${i.labels.job ? `(${i.labels.job})` : ''} ${i.message}`),
             )
         },
     }, config);
@@ -40,7 +45,8 @@ const initLogger = (appName, config) => {
         format: winston.format.combine(
             winston.format.timestamp(),
             winston.format.splat(),
-            winston.format((obj) => {   // 注入AppName
+            // 注入AppName 和 SessionID
+            winston.format((obj) => {
                 obj.labels = {
                     app: appName,
                     session: config.sessionID,
@@ -60,11 +66,11 @@ const initLogger = (appName, config) => {
         error: (...msg) => logger.error(...msg),
 
         success: (...msg) => {
-            msg = msg.length > 0 ? msg : [`${appName} finished successfully`];
+            msg = msg.length > 0 ? msg : [`${appName} 执行成功`];
             logger.log('notice', ...msg, { labels: { 'result': true } });
         },
         fail: (...msg) => {
-            msg = msg.length > 0 ? msg : [`${appName} failed`];
+            msg = msg.length > 0 ? msg : [`${appName} 执行失败`];
             logger.log('crit', ...msg, { labels: { 'result': false } })
         },
 

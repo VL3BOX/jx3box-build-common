@@ -1,11 +1,11 @@
 const file = require('./file');
+const { initLogger } = require('./logger');
 
 async function main() {
-    const dat = await file.readFile('J:\\Extracted\\settings\\MapList.tab');
-    const tab = await file.parseTable(dat, { keepColumns: ['ID'], ignoreEmptyLines: true });
-    for(const row of tab) {
-        console.log(row);
-    }
+    let logger = initLogger('test');
+    let sub = logger.job('sub');
+    logger.info('test');
+    sub.info('test');
 }
 
 main();
