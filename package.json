@@ -1,5 +1,5 @@
 {
-  "name": "jx3box-build-common",
+  "name": "@jx3box/jx3box-build-common",
   "version": "0.0.19",
   "description": "Utility library for JX3BOX build scripts",
   "main": "index.js",
