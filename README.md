@@ -56,4 +56,3 @@ for data table build
 构建结果一般使用csv导出，如果对于较大的文件（超过100M）可能会需要做文件切片
 
 - writeCsvFile
-

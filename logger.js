@@ -26,8 +26,8 @@ const initLogger = (appName, config) => {
                     return obj;
                 })(),
                 winston.format.colorize(),
-                winston.format.printf(i => 
-                    `[${i.timestamp}] [${i.labels.app}:${config.sessionID.slice(-4)}] [${i.level}] ${i.labels.job ? `(${i.labels.job})` : ''} ${i.message}`),
+                winston.format.printf(({timestamp, labels, level, message}) => 
+                    `[${timestamp}] [${labels.app}:${config.sessionID.slice(-4)}] [${level}] ${labels.job ? `(${labels.job})` : ''} ${message}`),
             )
         },
     }, config);
