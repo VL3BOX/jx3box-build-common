@@ -1,13 +1,14 @@
 # jx3box-build-common  
 
-for data table build
-
-## about this package
-
+数据表构建通用工具库
 在进行数据构建的时候总是会遇到一些熟悉的操作  
 比如需要一个日志输出器，tab，txt文件读取什么的。  
 但是目前的写法是有一个utils.js文件里面写了一些各个构件库用的方法  
 为了标准化，弄了这个仓库用于统一各个数据构建仓库中使用的方法  
+
+```js
+const {...} = require('@jx3box/jx3box-build-common');
+```
 
 ## API
 
@@ -39,8 +40,6 @@ for data table build
 构建过程中要求读取这些数据文件之后进行自己的合表等操作  
 
 - readTable
-- readTabFile
-- readCsvFile
 
 #### 其他文件读取
 
@@ -55,4 +54,4 @@ for data table build
 
 构建结果一般使用csv导出，如果对于较大的文件（超过100M）可能会需要做文件切片
 
-- writeCsvFile
+- writeCsv

@@ -30,6 +30,17 @@ const readFile = async (filePath, encoding = "gbk") => {
 };
 
 /**
+ * 把字符串写入到指定路径的文件内
+ * @param {String} filePath 文件路径
+ * @param {String} content 文件路径
+ * @param {String} encoding 文件编码，默认为 utf8
+ */
+const writeFile = async (filePath, content, encoding = "utf8") => {
+    const fileData = iconv.encode(content, encoding);
+    await fs.writeFile(filePath, fileData);
+};
+
+/**
  * 对数据表默认值行（第二行）的处理方式
  */
 const TABLE_DEFAULT_ROW_MODE = {
@@ -157,13 +168,26 @@ const parsePosition = content => {
     return result;
 };
 
+/**
+ * 把对象数组写入到指定路径的文件内
+ * @param {String} filePath 文件路径
+ * @param {Object[]} data 文件路径
+ * @param {String} encoding 文件编码，默认为 utf8
+ */
+const writeCsv = async (filePath, data, options) => {
+    let csv_data = papaparse.unparse(data, options);
+    await writeFile(filePath, csv_data);
+};
+
 module.exports = {
     exists,
     readFile,
+    writeFile,
     parseTable,
     parseIni,
     parsePosition,
     parseLua,
     parseJx3dat,
+    writeCsv,
     TABLE_DEFAULT_ROW_MODE: TABLE_DEFAULT_ROW_MODE,
 };
