@@ -1,5 +1,5 @@
-const file = require("../filefile");
-const { initLogger } = require("../loggergger");
+const file = require("../file");
+const { initLogger } = require("../logger");
 
 async function main() {
     let logger = initLogger("test");
