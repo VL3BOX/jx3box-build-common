@@ -175,8 +175,9 @@ const parsePosition = content => {
  * @param {String} encoding 文件编码，默认为 utf8
  */
 const writeCsv = async (filePath, data, options) => {
-    let csv_data = papaparse.unparse(data, options);
-    await writeFile(filePath, csv_data);
+    let csvData = papaparse.unparse(data, options);
+    csvData += options?.newline || "\r\n";
+    await writeFile(filePath, csvData);
 };
 
 module.exports = {

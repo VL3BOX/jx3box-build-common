@@ -11,7 +11,7 @@ async function main() {
             age: 19,
         },
     ];
-    await writeCsv("./tests/output/test.csv", data);
+    await writeCsv("./tests/test.csv", data, { newline: "\r" });
 }
 
 main();
