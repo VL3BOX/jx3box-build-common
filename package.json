@@ -1,6 +1,6 @@
 {
   "name": "@jx3box/jx3box-build-common",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Utility library for JX3BOX build scripts",
   "main": "index.js",
   "scripts": {

@@ -4,7 +4,7 @@ const iconv = require("iconv-lite");
 const ini = require("ini");
 const { parseJx3dat } = require("luat2json");
 const parseLua = require("luaparse").parse;
-const isNullEmptyOrWhitespace = require("./common").isNullEmptyOrWhitespace;
+const { isNullEmptyOrWhitespace } = require("./common");
 
 /**
  * 判断指定路径的文件是否存在

@@ -1,4 +1,5 @@
 const iconv = require("iconv-lite");
+const { isNullEmptyOrWhitespace } = require("./common");
 
 const simpleDecode = function (input, key) {
     if (input.length % 2 !== 0)
