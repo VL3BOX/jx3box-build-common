@@ -44,10 +44,31 @@ const simpleEncodeString = function(input, key, encoding = "gbk") {
     return iconv.decode(encodedBuf, "ascii");
 };
 
+/**
+ * 读取形如 "x,y,z;x,y,z;x,y,z" 的坐标数据，并以对象数组的方式返回。
+ * @param {String} content 坐标数据字符串
+ * @returns {Object[]} 坐标数据
+ */
+const parsePosition = content => {
+    const result = [];
+    const items = content.split(";");
+    for (let item of items) {
+        if (!isNullEmptyOrWhitespace(item)) {
+            const [x, y, z] = item.split(",");
+            result.push({
+                x: parseInt(x),
+                y: parseInt(y),
+                z: parseInt(z),
+            });
+        }
+    }
+    return result;
+};
+
 module.exports = {
     simpleDecode,
     simpleDecodeString,
     simpleEncode,
     simpleEncodeString,
+    parsePosition,
 };
-

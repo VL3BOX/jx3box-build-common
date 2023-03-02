@@ -148,27 +148,6 @@ const parseIni = content =>
     new Promise(async resolve => resolve(ini.parse(content)));
 
 /**
- * 读取形如 "x,y,z;x,y,z;x,y,z" 的坐标数据，并以对象数组的方式返回。
- * @param {String} content 坐标数据字符串
- * @returns {Object[]} 坐标数据
- */
-const parsePosition = content => {
-    const result = [];
-    const items = content.split(";");
-    for (let item of items) {
-        if (!isNullEmptyOrWhitespace(item)) {
-            const [x, y, z] = item.split(",");
-            result.push({
-                x: parseInt(x),
-                y: parseInt(y),
-                z: parseInt(z),
-            });
-        }
-    }
-    return result;
-};
-
-/**
  * 把对象数组写入到指定路径的文件内
  * @param {String} filePath 文件路径
  * @param {Object[]} data 文件路径
@@ -186,7 +165,6 @@ module.exports = {
     writeFile,
     parseTable,
     parseIni,
-    parsePosition,
     parseLua,
     parseJx3dat,
     writeCsv,
