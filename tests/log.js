@@ -6,6 +6,13 @@ async function main() {
     let sub = logger.job("sub");
     logger.info("test");
     sub.info("test");
+
+    try {
+        throw new Error("test");
+    }
+    catch (e) {
+        logger.fail(e);
+    }
 }
 
 main();

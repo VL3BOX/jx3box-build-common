@@ -25,6 +25,12 @@ const initLogger = (appName, config) => {
                     obj.level = obj.level.toUpperCase();
                     return obj;
                 })(),
+                // 自动展开错误堆栈
+                winston.format((obj) => {
+                    if(obj.message instanceof Error)
+                        obj.message = obj.message.stack;
+                    return obj;
+                })(),
                 winston.format.colorize(),
                 winston.format.printf(({timestamp, labels, level, message}) => 
                     `[${timestamp}] [${labels.app}:${config.sessionID.slice(-4)}] [${level}] ${labels.job ? `(${labels.job})` : ''} ${message}`),
