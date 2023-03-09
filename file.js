@@ -159,6 +159,10 @@ const writeCsv = async (filePath, data, options) => {
     await writeFile(filePath, csvData);
 };
 
+const writeJSON = async (filePath, obj, replacer, space) => {
+    await writeFile(filePath, JSON.stringify(obj, replacer, space));
+};
+
 module.exports = {
     exists,
     readFile,
@@ -168,5 +172,6 @@ module.exports = {
     parseLua,
     parseJx3dat,
     writeCsv,
+    writeJSON,
     TABLE_DEFAULT_ROW_MODE: TABLE_DEFAULT_ROW_MODE,
 };
