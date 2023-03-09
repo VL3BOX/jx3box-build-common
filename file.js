@@ -160,6 +160,8 @@ const writeCsv = async (filePath, data, options) => {
 };
 
 const writeJSON = async (filePath, obj, replacer, space) => {
+    replacer = replacer || null;
+    space = space || 4;
     await writeFile(filePath, JSON.stringify(obj, replacer, space));
 };
 
