@@ -10,9 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/JX3BOX/jx3box-build-common.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@jx3box"
-  },
   "author": "",
   "bugs": {
     "url": "https://github.com/JX3BOX/jx3box-build-common/issues"
