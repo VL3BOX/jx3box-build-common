@@ -25,10 +25,12 @@ const initLogger = (appName, config) => {
                     obj.level = obj.level.toUpperCase();
                     return obj;
                 })(),
-                // 自动展开错误堆栈
+                // 自动展开错误堆栈与对象/数组
                 winston.format((obj) => {
                     if(obj.message instanceof Error)
                         obj.message = obj.message.stack;
+                    else if (typeof obj.message === 'object' || Array.isArray(obj.message))
+                        obj.message = JSON.stringify(obj.message);
                     return obj;
                 })(),
                 winston.format.colorize(),
