@@ -21,7 +21,7 @@
     "luaparse": "^0.3.1",
     "luat2json": "^0.0.2",
     "moment": "^2.29.4",
-    "papaparse": "^5.3.2",
+    "papaparse": "^5.4.1",
     "progress": "^2.0.3",
     "synchronous-promise": "^2.0.16",
     "uuid": "^9.0.0",

@@ -76,6 +76,11 @@ const parseTable = (content, config) =>
         papaparse.parse(
             content,
             {
+                delimiter: config.delimiter,
+                newline: "\r\n",
+                skipEmptyLines: "greedy",
+                delimitersToGuess: [",", "\t"],
+
                 complete: function (results) {
                     // 有任何出错且不忽略则炸
                     if (results.errors.length > 0 && !config.ignoreError) {
@@ -130,11 +135,6 @@ const parseTable = (content, config) =>
 
                     resolve(result);
                 },
-            },
-            {
-                delimiter: config.delimiter,
-                skipEmptyLines: "greedy",
-                delimitersToGuess: [",", "\t"],
             }
         );
     });
