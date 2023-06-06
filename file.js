@@ -70,6 +70,7 @@ const parseTable = (content, config) =>
                 delimiter: "",
                 ignoreError: false,
                 keepColumns: [],
+                newline: "\r\n"
             },
             config
         );
@@ -79,6 +80,7 @@ const parseTable = (content, config) =>
                 delimiter: config.delimiter,
                 skipEmptyLines: "greedy",
                 delimitersToGuess: [",", "\t"],
+                newline: config.newline,
 
                 complete: function (results) {
                     // 有任何出错且不忽略则炸
