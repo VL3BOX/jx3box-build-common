@@ -77,7 +77,6 @@ const parseTable = (content, config) =>
             content,
             {
                 delimiter: config.delimiter,
-                newline: "\r\n",
                 skipEmptyLines: "greedy",
                 delimitersToGuess: [",", "\t"],
 
