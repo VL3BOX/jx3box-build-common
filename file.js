@@ -19,6 +19,15 @@ const exists = async path => {
 };
 
 /**
+ * 确保指定路径的文件夹存在，如不存在则创建
+ * @param {String} path 要判断的路径
+ */
+const ensureDir = async path => {
+    if (!await exists(path))
+        await fs.mkdir(path, { recursive: true });
+};
+
+/**
  * 读取指定路径的文件，并以字符串的方式返回。
  * @param {String} filePath 文件路径
  * @param {String} encoding 文件编码，默认为 gbk
@@ -169,6 +178,7 @@ const writeJSON = async (filePath, obj, replacer, space) => {
 
 module.exports = {
     exists,
+    ensureDir,
     readFile,
     writeFile,
     parseTable,
